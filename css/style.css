@@ -31,3 +31,8 @@ td {
 table, tr, td {
 	border: 1px solid teal; /*sets gameboard border */
 }
+
+.catImg, .corgiImg{
+	width: 200px;
+	height: 200px;
+}

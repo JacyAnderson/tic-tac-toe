@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Tic Tac Toe</title>
+	<title>Kit Cat Corgi</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -33,13 +33,51 @@
   crossorigin="anonymous">
   </script>
   <script>
-  	// checks what box has been clicked, logs result
+  	//current player's turn
+  	
+  	//function to randomly choose starting player
+  	function randomIntFromInterval(min,max)
+  	{
+  		return Math.floor(Math.random()*2)+1;
+  		console.log(randomIntFromInterval);
+  	}
+  	var playerTurn = randomIntFromInterval();
+  	console.log(playerTurn);
+
+  	//names starting player as "X" or "O"
+  	function startingPlayer(){
+  		if (playerTurn === 1) {
+  			alert('Cat gets first move.');
+  		}
+  		else {
+  			alert('Corgi gets first move.');
+  		}
+  	} 
+
+  	startingPlayer();
+
+  	// Click function to play X or O
   	$('td').click(function() {
+  		//logs clicked box id to console
   		$(console.log(this));
-  	});
+  		//if player 1(X)'s turn, on click play "X"
+  	//else, if player 2(O)'s turn, on click play "O"'
+  	if ( playerTurn === 1) {
+  		$(this).prepend('<img class="catImg" src="images/cat.jpg" />')
+  		console.log("Cat");
+  		// $('td').attr('href');
+  		// changes playerTurn
+  		playerTurn++;
+  	}
+  	else {
+  		$(this).prepend('<img class="corgiImg" src="images/corgi.jpeg" />')
+  		console.log("Corgi");
+  		//changes playerTurn
+  		playerTurn--;
+  	}
+  });
 
   	
-
   </script>
 </body>
 </html>
