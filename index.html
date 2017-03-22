@@ -6,8 +6,10 @@
 </head>
 <body>
 	<header> 
+		<!-- button to reset board -->
 		<button id="reset">Reset Board</button>
 	</header>
+	<!-- establishes gameboard layout -->
 	<table id="gameBoard">
 		<tr id="row-1">
 			<td id="box-1" class="box"></th>
@@ -29,6 +31,13 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous">
+  </script>
+  <script>
+  	// checks what box has been clicked, logs result
+  	$('td').click(function() {
+  		$(console.log(this));
+  	});
+
   	
 
   </script>

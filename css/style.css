@@ -6,7 +6,8 @@ header {
 	text-align: center;
 }
 
-button {
+/*reset button styling*/
+#reset {
 	font-size: 30px;
 	border-radius: 6px;
 	width: 30%;
@@ -14,16 +15,19 @@ button {
 	background-color: purple;
 	color: white;
 }
+
 button:hover {
 	background-color: teal;
 }
+
 table {
 	margin: 0 auto;
+	border-collapse: collapse; /*collapses table border*/
 }
 td {
 	width: 200px;
 	height: 200px;
 }
 table, tr, td {
-	border: 1px solid teal;
+	border: 1px solid teal; /*sets gameboard border */
 }
