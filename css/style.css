@@ -1,0 +1,29 @@
+* {
+
+}
+
+header {
+	text-align: center;
+}
+
+button {
+	font-size: 30px;
+	border-radius: 6px;
+	width: 30%;
+	margin: 0 0 20px;
+	background-color: purple;
+	color: white;
+}
+button:hover {
+	background-color: teal;
+}
+table {
+	margin: 0 auto;
+}
+td {
+	width: 200px;
+	height: 200px;
+}
+table, tr, td {
+	border: 1px solid teal;
+}
