@@ -6,8 +6,7 @@
 </head>
 <body>
 	<header> 
-		<!-- button to reset board -->
-		<button id="reset">Reset Board</button>
+		<h1>Kit, Cat, Corgi!</h1>
 	</header>
 	<!-- establishes gameboard layout -->
 	<table id="gameBoard">
@@ -27,25 +26,33 @@
 			<td id="box-9" class="box"></th>
 		</tr>
 	</table>
+	<footer>
+		<!-- button to reset board -->
+		<button id="reset">Reset Board</button>
+	</footer>
 	<script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous">
-  </script>
-  <script>
+ 	</script>
+  	<script>
 
   	//current player's turn
   	
   	//function to randomly choose starting player
-  	function randomIntFromInterval(min,max)
-  	{
+  	function randomIntFromInterval(min,max) {
   		return Math.floor(Math.random()*2)+1;
   		console.log(randomIntFromInterval);
   	}
   	var playerTurn = randomIntFromInterval();
   	console.log(playerTurn);
+  	//lists amount of turns made by cat
+  	var catTurns = 0;
+  	//lists amount of turns made by corgi
+  	var corgiTurns = 0;
+  	var totalTurns = 0;
 
-  	//names starting player as "X" or "O"
+  	//names starting player as "Cat" or "Corgi"
   	function startingPlayer(){
   		if (playerTurn === 1) {
   			alert('Cat gets first move.');
@@ -57,31 +64,69 @@
   	//runs startingPlayer function
   	startingPlayer();
 
-  	// Click function to play X or O
+  	// Click function to play Cat or Corgi
   	$('td').click(function() {
   		//logs clicked box id + class to console
   		$(console.log(this));
   		//if player 1(Cat)'s turn, on click play "Cat"
-  	//else, if player 2(Corgi)'s turn, on click play "Corgi"'
+  		//else, if player 2(Corgi)'s turn, on click play "Corgi"'
   	if ( playerTurn === 1) {
   		//adds cat image to clicked element
   		$(this).prepend('<img class="catImg" src="images/cat.jpg" />')
   		console.log("Cat");
+  		//makes clicked element unclickable after one click
   		$(this).css("pointer-events", "none");
   		// changes playerTurn
   		playerTurn++;
+  		//adds cat class to box 
+  		$(this).attr('class','cat');
+  		console.log(this);
+  		catTurns++;
+  		console.log(catTurns);
+  		totalTurns++;
   	}
   	else {
   		//adds corgi picture to clicked element
   		$(this).prepend('<img class="corgiImg" src="images/corgi.jpeg" />')
   		console.log("Corgi");
-  		$(this).css("pointer-events", "none");
+  		 //makes clicked element unclickable after one click
+  		 $(this).css("pointer-events", "none");
   		//changes playerTurn
   		playerTurn--;
+  		//adds corgi class to box 
+  		$(this).attr('class','corgi');
+  		console.log(this);
+  		corgiTurns++;
+  		console.log(corgiTurns);
+  		totalTurns++;
   	}
-  });
+  	//checks 8 possible win conditions to see if cat or corgi has won
+  	// var check = function () { 
+  	// 	if (catTurns === 3 || corgiTurns === 3);
+  	function checkForWin() {
+  		//checks for cat win
+  		if ($('#box-1').hasClass('cat')&& $('#box-2').hasClass('cat')&& $('#box-3').hasClass('cat')|| $('#box-1').hasClass('cat')&& $('#box-4').hasClass('cat')&& $('#box-7').hasClass('cat')||$('#box-1').hasClass('cat')&& $('#box-5').hasClass('cat')&& $('#box-9').hasClass('cat')|| $('#box-2').hasClass('cat')&& $('#box-5').hasClass('cat')&& $('#box-8').hasClass('cat')|| $('#box-3').hasClass('cat')&& $('#box-6').hasClass('cat')&& $('#box-9').hasClass('cat')|| $('#box-3').hasClass('cat')&& $('#box-5').hasClass('cat')&& $('#box-7').hasClass('cat')|| $('#box-4').hasClass('cat')&& $('#box-5').hasClass('cat')&& $('#box-6').hasClass('cat')|| $('box-7').hasClass('cat')&& $('#box-8').hasClass('cat')&& $('#box-9').hasClass('cat')){
+  			//makes board unclickable after win
+  			 $('table').css("pointer-events", "none");
+  			 //delays win message until after image is shown
+  			 setTimeout(function() { alert("Meow! Cat wins! Reset to play again.");
+  			  }, 1);
+  		
+  		//checks for corgi win
+  		} else if ($('#box-1').hasClass('corgi')&& $('#box-2').hasClass('corgi')&& $('#box-3').hasClass('corgi')|| $('#box-1').hasClass('corgi')&& $('#box-4').hasClass('corgi')&& $('#box-7').hasClass('corgi')||$('#box-1').hasClass('corgi')&& $('#box-5').hasClass('corgi')&& $('#box-9').hasClass('corgi')|| $('#box-2').hasClass('corgi')&& $('#box-5').hasClass('corgi')&& $('#box-8').hasClass('corgi')|| $('#box-3').hasClass('corgi')&& $('#box-6').hasClass('corgi')&& $('#box-9').hasClass('corgi')|| $('#box-3').hasClass('corgi')&& $('#box-5').hasClass('corgi')&& $('#box-7').hasClass('corgi')|| $('#box-4').hasClass('corgi')&& $('#box-5').hasClass('corgi')&& $('#box-6').hasClass('corgi')|| $('#box-7').hasClass('corgi')&& $('#box-8').hasClass('corgi')&& $('#box-9').hasClass('corgi')) {
+  			//makes board unclickable after win
+  			 $('table').css("pointer-events", "none");
+  			 //delays win message until after image is shown
+  			 setTimeout(function() { alert("Bark bark! Corgi wins! Reset to play again."); }, 1);
+  		} 
+  		}
+  		checkForWin();
+  	});
+  	//reloads page on click
+  	$('#reset').click(function() {
+    location.reload();
+});
 
-  	
   </script>
 </body>
 </html>
