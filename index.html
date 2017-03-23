@@ -33,6 +33,7 @@
   crossorigin="anonymous">
   </script>
   <script>
+
   	//current player's turn
   	
   	//function to randomly choose starting player
@@ -53,25 +54,28 @@
   			alert('Corgi gets first move.');
   		}
   	} 
-
+  	//runs startingPlayer function
   	startingPlayer();
 
   	// Click function to play X or O
   	$('td').click(function() {
-  		//logs clicked box id to console
+  		//logs clicked box id + class to console
   		$(console.log(this));
-  		//if player 1(X)'s turn, on click play "X"
-  	//else, if player 2(O)'s turn, on click play "O"'
+  		//if player 1(Cat)'s turn, on click play "Cat"
+  	//else, if player 2(Corgi)'s turn, on click play "Corgi"'
   	if ( playerTurn === 1) {
+  		//adds cat image to clicked element
   		$(this).prepend('<img class="catImg" src="images/cat.jpg" />')
   		console.log("Cat");
-  		// $('td').attr('href');
+  		$(this).css("pointer-events", "none");
   		// changes playerTurn
   		playerTurn++;
   	}
   	else {
+  		//adds corgi picture to clicked element
   		$(this).prepend('<img class="corgiImg" src="images/corgi.jpeg" />')
   		console.log("Corgi");
+  		$(this).css("pointer-events", "none");
   		//changes playerTurn
   		playerTurn--;
   	}
